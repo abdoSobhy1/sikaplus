@@ -242,6 +242,7 @@ img {
 .header-cont {
   width: 100%;
   height: calc(100vh - 120px);
+  height: calc(100dvh - 120px);
 }
 .header-cont .container {
   position: relative;
@@ -648,6 +649,7 @@ img {
   margin-top: 50px;
   background-image: url(../img/cover.jpg);
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
 }
 .team-member .overlay {
