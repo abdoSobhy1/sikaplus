@@ -53,7 +53,7 @@ scrollers.forEach((scroller) => {
     let scrollerInnerWidth = scrollerInner.getBoundingClientRect().width;
     let windowWidth = window.innerWidth;
     let numberOfDuplicates = 1;
-    while (scrollerInnerWidth < windowWidth * 2) {
+    while (scrollerInnerWidth < windowWidth * 2 || numberOfDuplicates < 2) {
         numberOfDuplicates++;
         scrollerContent.forEach((item) => {
             const duplicatedItem = item.cloneNode(true);
