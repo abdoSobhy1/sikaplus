@@ -45,14 +45,24 @@ searchToggle.addEventListener('click', function () {
 });
 
 
-const scroller = document.querySelector('.scroller');
+const scrollers = document.querySelectorAll('.scroller');
 
-const scrollerInner = document.querySelector('.scroller_inner');
-
-const scrollerContent = Array.from(scrollerInner.children);
-
-scrollerContent.forEach((item) => {
-    const duplicatedItem = item.cloneNode(true);
-    duplicatedItem.classList.add('duplicated');
-    scrollerInner.appendChild(duplicatedItem);
+scrollers.forEach((scroller) => {
+    const scrollerInner = scroller.querySelector('.scroller_inner');
+    const scrollerContent = Array.from(scrollerInner.children);
+    let scrollerInnerWidth = scrollerInner.getBoundingClientRect().width;
+    let windowWidth = window.innerWidth;
+    let numberOfDuplicates = 1;
+    while (scrollerInnerWidth < windowWidth * 2) {
+        numberOfDuplicates++;
+        scrollerContent.forEach((item) => {
+            const duplicatedItem = item.cloneNode(true);
+            duplicatedItem.classList.add('duplicated');
+            scrollerInner.appendChild(duplicatedItem);
+        });
+        scrollerInnerWidth = scrollerInner.getBoundingClientRect().width;
+    }
+    scrollerInner.style.setProperty('--duplicates', numberOfDuplicates);
 });
+
+

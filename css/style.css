@@ -663,19 +663,25 @@ img {
   overflow: hidden;
 }
 
-.team-member .scroller_inner {
+.scroller_inner {
+  --duplicates: 2;
+  --gap: 1.5rem;
   display: flex;
-  gap: 1rem;
+  gap: var(--gap);
   padding-block: 1rem;
   width: max-content;
-  /* justify-content: space-around; */
-  /* position: relative; */
-  animation: scroll 30s linear infinite;
+  animation: scroll 20s linear infinite;
+}
+
+.scroller_inner:hover {
+  animation-play-state: paused;
 }
 
 @keyframes scroll {
   to {
-    transform: translate(calc(-50% - 0.5rem));
+    transform: translate(
+      calc(-100% / var(--duplicates) - calc(var(--gap) / var(--duplicates)))
+    );
   }
 }
 
